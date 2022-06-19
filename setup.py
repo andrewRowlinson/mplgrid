@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-__version__ = "0.0.0"
+exec(open('mplgrid/_version.py').read())
 
 with open('README.md', encoding='utf-8') as readme_file:
     README = readme_file.read()

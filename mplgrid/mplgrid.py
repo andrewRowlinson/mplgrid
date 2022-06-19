@@ -136,7 +136,7 @@ def _grid_dimensions(ax_aspect=1, figheight=9, nrows=1, ncols=1,
     return dimensions
 
 
-def _draw_grid(dimensions, left_pad=0, right_pad=0, axis=True, ax_key='ax'):
+def _draw_grid(dimensions, left_pad=0, right_pad=0, axis=True, ax_key='grid'):
     """ A helper to create a grid of axes in a specified location
 
     Parameters
@@ -151,7 +151,7 @@ def _draw_grid(dimensions, left_pad=0, right_pad=0, axis=True, ax_key='ax'):
         and the title/endnote. The padding units are fractions of the figure width.
     axis : bool, default True
         Whether the endnote and title axes are 'on'.
-    ax_key : str, default ax
+    ax_key : str, default grid
         The dictionary key for the main axes in the grid.
 
     Returns
@@ -210,7 +210,7 @@ def grid(ax_aspect=1, figheight=9, nrows=1, ncols=1,
          grid_height=0.715, grid_width=0.95, space=0.05,
          left=None, bottom=None,
          endnote_height=0.065, endnote_space=0.01,
-         title_height=0.15, title_space=0.01, axis=True, ax_key='ax'):
+         title_height=0.15, title_space=0.01, axis=True, ax_key='grid'):
     """ Create a grid of axes in a specified location
 
     Parameters
@@ -256,7 +256,7 @@ def grid(ax_aspect=1, figheight=9, nrows=1, ncols=1,
         If title_height=0, then the title_space is set to zero.
     axis : bool, default True
         Whether the endnote and title axes are 'on'.
-    ax_key : str, default ax
+    ax_key : str, default grid
         The dictionary key for the main axes in the grid.
 
     Returns

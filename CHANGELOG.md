@@ -1,3 +1,13 @@
+:rocket: Version 0.1.0
+----------------------
+
+Changed
+- default ax_key changed from ax to grid
+
+Added
+- added a test for the figsize
+
+
 :rocket: Version 0.0.0
 ----------------------
 
