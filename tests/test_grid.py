@@ -1,9 +1,12 @@
+""" Tests for mplgrid."""
+
 from mplgrid import grid, grid_dimensions
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 def test_figsize():
+    """ Test that the right figure size is created."""
     for i in range(100):
         ax_aspect = np.random.uniform(0.3, 2)
         nrows = np.random.randint(1, 6)
