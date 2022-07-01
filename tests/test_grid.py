@@ -39,3 +39,15 @@ def test_figsize():
         assert np.isclose(check_figwidth - figwidth, 0)
         assert np.isclose(check_figheight - figheight, 0)
         plt.close(fig)
+
+
+def test_return_shape():
+    """ Test that the return shape is the same as plt.subplots."""
+    for nrows in range(1, 4):
+        for ncols in range(1, 4):
+            fig1, ax1 = plt.subplots(nrows=nrows, ncols=ncols)
+            fig2, ax2 = grid(nrows=nrows, ncols=ncols)
+            if nrows > 1 or ncols > 1:
+                assert ax1.shape == ax2.shape
+            plt.close(fig1)
+            plt.close(fig2)
