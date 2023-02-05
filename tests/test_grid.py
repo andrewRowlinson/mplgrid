@@ -1,43 +1,48 @@
 """ Tests for mplgrid."""
 
-from mplgrid import grid, grid_dimensions
-import numpy as np
+from math import isclose
+from random import randint, uniform
+
 import matplotlib.pyplot as plt
+
+from mplgrid import grid, grid_dimensions
 
 
 def test_figsize():
     """ Test that the right figure size is created."""
     for i in range(100):
-        ax_aspect = np.random.uniform(0.3, 2)
-        nrows = np.random.randint(1, 6)
-        ncols = np.random.randint(1, 6)
-        figwidth = np.random.uniform(0.5, 10)
-        figheight = np.random.uniform(0.5, 10)
-        max_grid = np.random.uniform(0.5, 1)
-        space = np.random.uniform(0, 0.2)
+        aspect = uniform(0.3, 3)
+        nrows = randint(1, 6)
+        ncols = randint(1, 6)
+        figwidth = uniform(0.5, 10)
+        figheight = uniform(0.5, 10)
+        max_side = uniform(0.5, 1)
+        space = uniform(0, 0.2)
 
-        grid_width, grid_height = grid_dimensions(ax_aspect=ax_aspect,
-                                                  figwidth=figwidth,
-                                                  figheight=figheight,
-                                                  nrows=nrows,
-                                                  ncols=ncols,
-                                                  max_grid=max_grid,
-                                                  space=space)
-        assert np.isclose(grid_height - max_grid, 0) or np.isclose(grid_width - max_grid, 0)
+        width, height = grid_dimensions(aspect=aspect,
+                                        figwidth=figwidth,
+                                        figheight=figheight,
+                                        nrows=nrows,
+                                        ncols=ncols,
+                                        max_side=max_side,
+                                        space=space,
+                                        )
+        assert (isclose(height - max_side, 0, abs_tol=1e-09) or
+                isclose(width - max_side, 0, abs_tol=1e-09)
+                )
 
-        fig, ax = grid(ax_aspect=ax_aspect,
+        fig, ax = grid(aspect=aspect,
                        figheight=figheight,
                        nrows=nrows,
                        ncols=ncols,
-                       grid_height=grid_height,
-                       grid_width=grid_width,
+                       height=height,
+                       width=width,
                        space=space,
-                       endnote_height=0,
-                       title_height=0)
+                       )
         check_figwidth, check_figheight = fig.get_size_inches()
 
-        assert np.isclose(check_figwidth - figwidth, 0)
-        assert np.isclose(check_figheight - figheight, 0)
+        assert isclose(check_figwidth - figwidth, 0, abs_tol=1e-09)
+        assert isclose(check_figheight - figheight, 0, abs_tol=1e-09)
         plt.close(fig)
 
 
