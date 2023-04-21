@@ -159,7 +159,6 @@ def grid(aspect=1,
                            bottom=bottom)
     fig, ax = plt.subplots(figsize=(dim['figwidth'], dim['figheight']),
                            nrows=dim['nrows'], ncols=dim['ncols'],
-                           subplot_kw={'aspect': dim['aspect']},
                            gridspec_kw={'left': dim['left'],
                                         'bottom': dim['bottom'],
                                         'right': dim['right'],

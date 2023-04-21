@@ -1,3 +1,10 @@
+:rocket: Version 0.3.0
+----------------------
+
+Fixes
+- Fix the aspect argument as it was setting the aspect ratio, which produced the wrong size \
+of chart when data was added.
+
 :rocket: Version 0.2.1
 ----------------------
 
